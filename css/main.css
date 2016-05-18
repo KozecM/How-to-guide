@@ -70,7 +70,7 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #663300;
+    border-bottom: 20px solid #1B100D;
 }
 
 .footer-container1,
@@ -78,23 +78,23 @@ body {
     position: absolute;
     bottom:0;
     width: 100%;
-    border-top: 20px solid #663300;
+    border-top: 20px solid #1B100D;
 }
 
 .footer-container {
     
-    border-top: 20px solid #663300;
+    border-top: 20px solid #1B100D;
 }
 
 .header-container,
 .footer-container,
 .footer-container1,
 .main aside {
-    background: #cc6600;
+    background: #6A2C0C;
 }
 
 .title {
-    color: white;
+    color: #CB5909;
 }
 
 /* ==============
@@ -119,7 +119,7 @@ nav a {
     font-weight: bold;
 
     color: white;
-    background: #b34700;
+    background: #F18E1C;
 }
 
 nav a:hover,

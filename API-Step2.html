@@ -37,20 +37,37 @@
                             <li><b>api.brewery.com/v2/</b>: This part tells you the api too get information from.</li>
                             <li><b>beer/</b>: this part tells you what type of request you are making. It can be many different things like a search or a guild</li>
                             <li><b>Yq3v6n</b>: This part is the reference to a specific item.</li>
-                            <li><b>?key=Yq3v6n?key=mykey</b>: You replace mykey with the key that you got earlier, it telles the api that you are regstered and are allowed to access the info.</li>
+                            <li><b>?key=mykey</b>: You replace mykey with the key that you got earlier, it telles the api that you are regstered and are allowed to access the info.</li>
                         </ul>
                     </header>
                     <section>
-                        <h2>article section h2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
-                    </section>
-                    <section>
-                        <h2>article section h2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+                        <h2>JSON</h2>
+                        <p>That paragraph of information is called written in JSON it has some good information that we will be using to make the app, If you want to see it with a little more organization you can put in the previous link <a href="http://jsonlint.com">here</a></p>
+                        <pre>
+                            <code>
+{
+    "message": "Request Successful",
+    "data": {
+        "id": "Yq3v6n",
+        "name": "Guinness Black Lager",
+        "nameDisplay": "Guinness Black Lager",
+        "description": "Guinness Black lager is a cold-brewed with roasted barley to deliver the refreshing taste of lager with the unique character of Guinness.  Enjoy ice cold straight form the bottle.",
+        "abv": "4.5",
+        "glasswareId": 5,
+        "availableId": 1,
+        "styleId": 84,
+        "isOrganic": "N",
+        "labels": {
+            "icon": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/Yq3v6n\/upload_nddEOt-icon.png",
+            "medium": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/Yq3v6n\/upload_nddEOt-medium.png",
+            "large": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/Yq3v6n\/upload_nddEOt-large.png"
+        },
+                            </code>
+                        </pre>
+                        <p>That is much wasier to read now, we will use this information later when we start to make our app. We will be using the search part which is slightly different, but it will still diplay information like this.</p>
                     </section>
                     <footer>
-                        <h3>article footer h3</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor.</p>
+                        <p>Next, we will look at how to make a request using JavaScript.</p>
                     </footer>
                 </article>
                 
