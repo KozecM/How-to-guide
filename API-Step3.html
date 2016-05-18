@@ -41,9 +41,9 @@
         var ID = "Yq3v6n";
         var key = "?key=57ac3d20257053737a469c6962fd60be";
 
-        request.open(GET,"http://api.brewerydb.com/v2/beer/"+ ID + key, true )
+        request.open("GET","http://api.brewerydb.com/v2/beer/"+ ID + key, true )
 
-        request.AddEventListener("load", function{
+        request.addEventListener("load", function(){
             var information = JSON.parse(request.responsetext);
             console.log(information.overview);
         });
@@ -59,12 +59,10 @@
                         <h2>Open and addEventListener</h2>
                         <p><code>request.open(GET,"http://api.brewerydb.com/v2/beer/"+ ID + key, true )</code> is where we actually send our request to the server. The next part <code>request.AddEventListener("load", function{</code> is telling the computer to wait until the page is loaded before it does the next section of code which stores the information given and then displays it in the console</p>
                     </section>
-                    <script async src="//jsfiddle.net/sqoo253L/embed/js/dark/"></script>
                     <footer>
                         <p>Right click on the page and look at the console, you should be able to find all the information gathered by the request.</p>
                     </footer>
                 </article>
-
                 <nav>
                     <ul>
                         <li><a href="API-Step2.html"><<< Prev</a></li>
@@ -80,10 +78,11 @@
                 <h3>© Maxx Kozec 2016</h3>
             </footer>
         </div>
-
+        
+        <script src="js/main.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-        <script src="js/main.js"></script>
+        
     </body>
 </html>
