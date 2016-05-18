@@ -70,18 +70,27 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #e44d26;
+    border-bottom: 20px solid #663300;
 }
 
-.footer-container,
+.footer-container1,
 .main aside {
-    border-top: 20px solid #e44d26;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    border-top: 20px solid #663300;
+}
+
+.footer-container {
+    
+    border-top: 20px solid #663300;
 }
 
 .header-container,
 .footer-container,
+.footer-container1,
 .main aside {
-    background: #f16529;
+    background: #cc6600;
 }
 
 .title {
@@ -95,20 +104,22 @@ body {
 nav ul {
     margin: 0;
     padding: 0;
+    border-radius: 15px;
     list-style-type: none;
 }
 
 nav a {
     display: block;
+    border-radius: 15px;
     margin-bottom: 10px;
     padding: 15px 0;
 
-    text-align: center;
+    /*text-align: left;*/
     text-decoration: none;
     font-weight: bold;
 
     color: white;
-    background: #e44d26;
+    background: #b34700;
 }
 
 nav a:hover,
@@ -137,7 +148,8 @@ nav a:hover {
     padding: 0px 5% 10px;
 }
 
-.footer-container footer {
+.footer-container, .footer-container1 footer {
+
     color: white;
     padding: 20px 0;
 }
@@ -229,8 +241,8 @@ nav a:hover {
     }
 
     nav {
-        float: right;
-        width: 38%;
+        float: left;
+        width: 80%;
     }
 
 /* ============
@@ -239,11 +251,11 @@ nav a:hover {
 
     .main article {
         float: left;
-        width: 57%;
+        width: 100%;
     }
 
     .main aside {
-        float: right;
+        float: left;
         width: 28%;
     }
 }
