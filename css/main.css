@@ -108,6 +108,14 @@ nav ul {
     list-style-type: none;
 }
 
+pre{
+    background-color: lightgrey;
+    border-radius: 20px;
+}
+code {
+    text-color: #CB5909;
+    color: #CB5909;
+}
 nav a {
     display: block;
     border-radius: 15px;
