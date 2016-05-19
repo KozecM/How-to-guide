@@ -20,6 +20,11 @@ requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a46
     response.getBody();
     console.log(response);
     });
+
+app.get('/',function(req, res){
+  res.render('index');
+});
+
 app.get('/index',function(req, res){
 	res.render('index');
 });
@@ -29,7 +34,7 @@ app.get('/API-Step1',function(req, res){
 });
 
 app.get('/API-Step2',function(req, res){
-	res.render('API-Step3');
+	res.render('API-Step2');
 });
 
 app.get('/API-Step3',function(req, res){
