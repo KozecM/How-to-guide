@@ -22,7 +22,7 @@ requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a46
     var type = {};
 
     for (var f in response){
-      stuff.push({'name': f, 'value':response[f]}})
+      stuff.push({'name': f, 'value':response[f]})
     }
     type.Listdata = stuff;
     response.render('API-Step3', type);
