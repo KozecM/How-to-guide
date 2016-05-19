@@ -18,7 +18,7 @@ app.set('port', 3000);
 requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a469c6962fd60be').then('/API-Step3', function(response) {
     // Get the response body (JSON parsed or jQuery object for XMLs)
     response.getBody();
-    var type{};
+    var type = {};
 
     for (var f in response.query){
       stuff.push({'name': f, 'value':req.query[f]});
