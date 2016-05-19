@@ -26,12 +26,12 @@ app.get('/API-Step1',function(req, res){
 	res.render('API-Step1');
 });
 
-app.get('/',function(req, res){
-	res.render('index');
+app.get('/API-Step2',function(req, res){
+	res.render('API-Step3');
 });
 
-app.get('/',function(req, res){
-	res.render('index');
+app.get('/API-Step3',function(req, res){
+	res.render('API-Step3');
 });
 
 
