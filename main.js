@@ -41,6 +41,15 @@ app.get('/API-Step3',function(req, res){
 	res.render('API-Step3');
 });
 
+app.get('/API-Step4',function(req, res){
+  res.render('API-Step4');
+});
+
+app.get('/API-Step5',function(req, res){
+  res.render('API-Step5');
+});
+
+
 
 app.use(function(req,res){
   res.status(404);
