@@ -22,7 +22,7 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title">more about BrewersDB</h1>
+                <h1 class="title">Make Our App</h1>
                
             </header>
         </div>
@@ -32,20 +32,58 @@
 
                 <article>
                     <header>
-                        <h1>Documentation</h1>
-                        <p>There are lots of thinngs that you can do with BrewersDB FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCCCCCCCCCCCCCCCKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK</p>
+                        <h1>Organizing it</h1>
+                        <p>Now we have all the information that we need in order to make the app all that is left now is to put it all together. The first thing you want to do is look through all the data in the bullet points on the previous page and decide what you want to display. Remember, the part that says lables actually has images inside it. That is why it doesn't show anything.</p>
                     </header>
                     <section>
-                        <h2>article section h2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+                        <h2>Set Up Your HTML</h2>
+                        <p>We need to set up a section of our html to take the information that we need and display it, this isn't too hard, this is what i made for thhe app on the next page:</p>
+                        <pre>
+                            <code>
+        &ltdiv class="" ="app">
+            &ltimg id="beer" src = {{logo}}>
+                
+            &lth1>{{name}}&lt/h1>
+            &ltul>
+                &ltli>Name: {{Name}}&lt/li>
+                &ltli>Description: {{description}}&lt/li>
+                &ltli>ABV: {{abv}}&lt/li>
+                &ltli>Serving Temp: {{servTemp}}&lt/li>
+            &lt/ul>
+        &lt/div>
+                            </code>
+                        </pre>
+                        <p>That doesn't look like much, does it? That is because we are going to send all of our information over from the javascript. What you should pay attention to is where you see items in double brackets like this \{{}}, that makes a placeholder for information gathered by the javascript to be inserted into the code.</p>
                     </section>
                     <section>
-                        <h2>article section h2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+                        <h2>Javascript</h2>
+                        <p>Because I am using the server to get all of my information, most of my code is here. This is what it looks like:</p>
+
+                        <pre>
+                            <code>
+    app.get('/API-Step5',function(req, res){
+      var holder;
+      var container = {};
+      requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a469c6962fd60be').then(function(response) {
+        // Get the response body (JSON parsed or jQuery object for XMLs)
+        response.getBody();
+        holder = JSON.parse(response.body);
+        container.logo = holder.data.labels.medium;
+        container.name = holder.data.name;
+        container.description = holder.data.description;
+        container.abv = holder.data.abv;
+        container.servtemp = holder.servingTemperature;
+    
+        res.render('API-Step5', container);
+      });
+    });
+
+                            </code>
+                        </pre>
+                        <p>Here you can see the code is still pretty simple. We get our JSON from requestify.get, then we parse it into holder. After that we just insert all the information that we need into the html using <code>container.</code> then our placeholder. After that we send it all to the html page like normal! </p>
                     </section>
                     <footer>
-                        <h3>article footer h3</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor.</p>
+                        <p>Now let's go and see what our app looks like!</p>
                     </footer>
                 </article>
 

@@ -33,44 +33,50 @@
                 <article>
                     <header>
                         <h1>JavaScript</h1>
-                        <p>Ajax is what we will be using to take our API data and insert it into our html.</p>
+                        <p>Because of the nature of this specific API, our code will be slightly more complicated.</p>
                         <p>Lets see what a basic request will look like:</p>
                         <pre>
                             <code>
-        var request = new XMLHttpRequest();
-        var ID = "Yq3v6n";
-        var key = "?key=57ac3d20257053737a469c6962fd60be";
+        var requestify = require('requestify');
+        var express = require('express');
 
-        request.open("GET","http://api.brewerydb.com/v2/beer/"+ ID + key, true )
 
-        request.addEventListener("load", function(){
-            var information = JSON.parse(request.responsetext);
-            console.log(information.overview);
+        app.get('/API-Step3',function(req, res){
+              var thing = [];
+              var container = {};
+  
+              requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a469c6962fd60be').then(function(response) {
+                // Get the response body (JSON parsed or jQuery object for XMLs)
+                response.getBody();
+                var everything = JSON.parse(response.body);
+                for(var d in everything.data){
+                thing.push({'name': d, 'value':everything.data[d]});
+        
+                }
+                container.Listdata = thing;   
+                res.render('API-Step3', container);
+            });
         });
                             </code>
                         </pre>
                         <p>There is not too much going on here, but it might still be a little confusing so I will go through everything</p>
                     </header>
                     <section>
-                        <h2>The Vars</h2>
-                        <p>These are all of the variables that you I am using to make this code work, the most important one is <code>var request = new XMLHttpRequest();</code>. This is an object that makes it possible to send http requests. The other variables are just to make it easier for me to organize my code.</p>
+                        <h2>The Vars and App.get</h2>
+                        <p>These are all of the variables that you I am using to make this code work. <code>app.get('/API-Step3',function(req, res){</code> This is a node.js package called express, I am using this and Handlebars to organize everything. This line is here to move everything I gather onto the web page.</p>
                     </section>
                     <section>
-                        <h2>Open and addEventListener</h2>
-                        <p><code>request.open(GET,"http://api.brewerydb.com/v2/beer/"+ ID + key, true )</code> is where we actually send our request to the server. The next part <code>request.AddEventListener("load", function{</code> is telling the computer to wait until the page is loaded before it does the next section of code which stores the information given and then displays it in the console</p>
+                        <h2>Requestify</h2>
+                        <p><code>requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a469c6962fd60be').then(function(response) {</code> this is the part of the code that sends a request to the api for the information that we want. the <code>response.getBody()</code> gets all of the information into JSON. After that we need to parse everything which is why we use JSON.parse. I then organize everything nicely with the for loop assigning everything a lable.</p>
                     </section>
                     <footer>
-                        <p>Because of the structure of this API, I cant just create a request. I have to go through a server. Here is the information that I can get from the server in JSON</p>
+                        <p>Because of the structure of this API, I cant just create a request. I have to go through a server. Here is the information that I can get from the server in a list</p>
+                    <ul>
+                        {{#each Listdata}}
+                            <li>{{this.name}}: {{this.value}}
+                        {{/each}}
+                    </ul>
 
-                        <pre>
-                            <code>
-                                <ul>
-                                    {{#each Listdata}}
-                                        <li>{{this.name}}: {{this.value}}
-                                    {{/each}}
-                                </ul>
-                            </code>
-                        </pre>
                     </footer>
                 </article>
                 <nav>

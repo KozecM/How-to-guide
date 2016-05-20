@@ -15,19 +15,6 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
-requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a469c6962fd60be').then('/API-Step3', function(response) {
-    // Get the response body (JSON parsed or jQuery object for XMLs)
-    response.getBody();
-    var stuff = [];
-    var type = {};
-
-    for (var f in response){
-      stuff.push({'name': f, 'value':response[f]})
-    }
-    type.Listdata = stuff;
-    response.render('API-Step3', type);
-    });
-
 app.get('/',function(req, res){
   res.render('index');
 });
@@ -45,7 +32,23 @@ app.get('/API-Step2',function(req, res){
 });
 
 app.get('/API-Step3',function(req, res){
-	res.render('API-Step3');
+  var thing = [];
+  var container = {};
+  
+  requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a469c6962fd60be').then(function(response) {
+    // Get the response body (JSON parsed or jQuery object for XMLs)
+    response.getBody();
+    var everything = JSON.parse(response.body);
+    for(var d in everything.data){
+        thing.push({'name': d, 'value':everything.data[d]});
+        
+      }
+    console.log(thing);
+    container.Listdata = thing;
+    console.log(container.Listdata);   
+    res.render('API-Step3', container);
+  });
+
 });
 
 app.get('/API-Step4',function(req, res){
@@ -53,10 +56,27 @@ app.get('/API-Step4',function(req, res){
 });
 
 app.get('/API-Step5',function(req, res){
-  res.render('API-Step5');
+  var holder;
+  var container = {};
+  requestify.get('http://api.brewerydb.com/v2/beer/Yq3v6n?key=57ac3d20257053737a469c6962fd60be').then(function(response) {
+    // Get the response body (JSON parsed or jQuery object for XMLs)
+    response.getBody();
+    holder = JSON.parse(response.body);
+    console.log(holder);
+    console.log(holder.data.labels.medium);
+    container.logo = holder.data.labels.medium;
+    container.name = holder.data.name;
+    container.description = holder.data.description;
+    container.abv = holder.data.abv;
+    container.servtemp = holder.servingTemperature;
+
+    res.render('API-Step5', container);
+  });
 });
 
-
+app.get('/End',function(req, res){
+  res.render('End');
+});
 
 app.use(function(req,res){
   res.status(404);
